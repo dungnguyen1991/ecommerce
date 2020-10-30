@@ -1,0 +1,114 @@
+[
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "title": "T-shirt",
+        "slug": "t-shirt",
+        "description": "This is an awesome shirt. By it :)",
+        "price": "39.99",
+        "image": "products/2865356662/2865356662.jpg",
+        "featured": true,
+        "active": true,
+        "timestamp": "2020-09-15T02:33:29.569Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "title": "Hat",
+        "slug": "hat",
+        "description": "This is an awesome hat",
+        "price": "39.99",
+        "image": "products/3417407103/3417407103.jpg",
+        "featured": false,
+        "active": true,
+        "timestamp": "2020-09-15T02:33:29.569Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "title": "Supercomputer",
+        "slug": "supercomputer",
+        "description": "Hi, it is good!!!",
+        "price": "33339.99",
+        "image": "products/2373477716/2373477716.jpg",
+        "featured": true,
+        "active": true,
+        "timestamp": "2020-09-15T02:33:29.569Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "title": "Supercomputer",
+        "slug": "supercomputer-5jxd",
+        "description": "This is a second computer product.",
+        "price": "39.99",
+        "image": "",
+        "featured": false,
+        "active": true,
+        "timestamp": "2020-09-15T02:33:29.569Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "title": "fruit",
+        "slug": "fruit",
+        "description": "Fruit is good for healthy!!!",
+        "price": "19.99",
+        "image": "",
+        "featured": false,
+        "active": true,
+        "timestamp": "2020-09-15T02:33:29.569Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+        "title": "Cart",
+        "slug": "cart",
+        "description": "Cart can hold some things!!!",
+        "price": "19.99",
+        "image": "",
+        "featured": false,
+        "active": true,
+        "timestamp": "2020-09-15T02:33:29.569Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+        "title": "skirt",
+        "slug": "skirt",
+        "description": "Skirt is beautiful for women! Skirt is beautiful for women! Skirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!Skirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!\r\nSkirt is beautiful for women!",
+        "price": "59.99",
+        "image": "",
+        "featured": false,
+        "active": true,
+        "timestamp": "2020-09-15T02:33:29.569Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+        "title": "T-shirt",
+        "slug": "t-shirt-z5j3",
+        "description": "This is another t-shirt",
+        "price": "19.99",
+        "image": "",
+        "featured": true,
+        "active": true,
+        "timestamp": "2020-09-16T09:07:06.375Z"
+    }
+}
+]
