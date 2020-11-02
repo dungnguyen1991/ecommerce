@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    #third party
+    'storages',
     #my apps
     'core.apps.CoreConfig',
     'products.apps.ProductsConfig',
@@ -161,3 +162,8 @@ CSRF_COOKIE_SECURE              = False
 SECURE_HSTS_SECONDS             = None
 SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
 SECURE_FRAME_DENY               = False
+
+AWS_GROUP_NAME = "eCommerce_group"
+AWS_USERNAME = "ecommerce-user"
+AWS_ACCESS_KEY_ID = "AKIAR2XFA5JMIYJHNCVC"
+AWS_SECRET_KEY = "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"
