@@ -4,7 +4,8 @@ ecommerce/settings/local.py
 
 *.sublime-project
 
-*.sqlite3
+db.sqlite3
+db.sqlite3-journal
 
 # Virtualenv related
 bin/
