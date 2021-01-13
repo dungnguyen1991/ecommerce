@@ -23,10 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = 'gjj2_8nq-#7*=@^5q(uz@9z#!=%o)rb*9le$po7k6lb6ea#ue4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ecommercetesting1991@gmail.com'
+EMAIL_HOST_PASSWORD = 'XNAyvzGuxdQM5xS'
+EMAIL_PORT = 587
+EMAIL_USE_TLS =True
+DEFAULT_FROM_EMAIL = 'Python ecommerce <ecommercetesting1991@gmail.com>'
+BASE_URL = '127.0.0.1:8000'
 
 # Application definition
 
