@@ -16,13 +16,14 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LogoutView
 
+from analytics.views import SalesView, SalesAjaxView
 from marketing.views import MarketingPreferenceUpdateView, MailchimpWebhookView
-from accounts.views import LoginView, RegisterView, guest_register_view
+from accounts.views import LoginView, RegisterView, GuestRegisterView
 from addresses.views import checkout_address_create_view, checkout_address_reuse_view
 from carts.views import cart_detail_api_view
 from products.views import (
@@ -32,6 +33,7 @@ from products.views import (
     ProductFeaturedListView,
     ProductFeatureDetailView,
     )
+from orders.views import LibraryView
 
 from carts.views import cart_home
 
@@ -51,11 +53,20 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name = 'login_page'),
     path('logout/', LogoutView.as_view(), name = 'logout'),
     path('register/', RegisterView.as_view(), name = 'register_page'),
-    path('register/guest/', guest_register_view, name = 'guest_register'),
+    path('register/guest/', GuestRegisterView.as_view(), name = 'guest_register'),
     path('checkout/address/create/', checkout_address_create_view, name='checkout_address_create'),
     path('checkout/address/reuse/', checkout_address_reuse_view, name='checkout_address_reuse'),
     path('settings/email/', MarketingPreferenceUpdateView.as_view(), name='marketing-pref'),
     path('webhooks/mailchimp/', MailchimpWebhookView.as_view(), name='webhooks-mailchimp'),
+    path('account/', include('accounts.urls', namespace='account')),
+    path('accounts/', include('accounts.passwords.urls')),
+    # path('accounts/login/', RedirectView.as_view(url='/login')),
+    path('accounts/', RedirectView.as_view(url='/account/')),
+    path('settings/', RedirectView.as_view(url='/account/')),
+    path('orders/', include('orders.urls', namespace='orders')),
+    path('library/', LibraryView.as_view(), name='library'),
+    path('analytics/sales/', SalesView.as_view(), name='sales-analytics'),
+    path('analytics/sales/data/', SalesAjaxView.as_view(), name='sales-analytics-data'),
 ]
 
 if settings.DEBUG:

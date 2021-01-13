@@ -26,6 +26,7 @@ def cart_detail_api_view(request):
 
 def cart_home(request):
     cart_obj, new_obj = Cart.objects.new_or_get(request)
+    print(cart_obj.is_digital)
     return render(request, "carts/home.html", {"cart": cart_obj})
 
 def cart_update(request):
@@ -47,7 +48,7 @@ def cart_update(request):
         request.session['cart_items'] = cart_obj.products.count()
         
         if request.is_ajax():
-            print("Ajax request")
+            # print("Ajax request")
             json_data = {
                 "added": added,
                 "removed": not added,
@@ -63,10 +64,13 @@ def checkout_home(request):
     if cart_created or cart_obj.products.count() == 0:
         return redirect("cart:home")
 
-    login_form = LoginForm()
-    guest_form = GuestForm()
+    login_form = LoginForm(request=request)
+    guest_form = GuestForm(request=request)
     address_form = AddressForm()
     billing_address_id = request.session.get("billing_address_id", None)
+
+    shipping_address_required = not cart_obj.is_digital
+
     shipping_address_id = request.session.get("shipping_address_id", None)
     billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
     address_qs = None
@@ -97,7 +101,8 @@ def checkout_home(request):
         "login_form": login_form,
         "guest_form": guest_form,
         "address_form": address_form,
-        "address_qs": address_qs,    
+        "address_qs": address_qs,
+        "shipping_address_required": shipping_address_required,
     }
     return render(request, "carts/checkout.html", context)
 

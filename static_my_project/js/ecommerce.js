@@ -96,13 +96,48 @@ $(document).ready(function(){
 
     // Cart + add products
     var productForm = $(".form-product-ajax");
+
+    function getOwnedProduct(productId, submitSpan){
+        var actionEndpoint = '/orders/endpoint/verify/ownership/'
+        var httpMethod = 'GET'
+        var data = {
+            product_id: productId
+        }
+        $.ajax({
+            url: actionEndpoint,
+            method: httpMethod,
+            data: data,
+            success: function(data){
+                if (data.owner){
+                    submitSpan.html('<a href="/library/">In Library</a>');
+                }
+            },
+            error: function(err){
+                console.log(err)
+            }
+        })
+    }
+
+    $.each(productForm, function(index, object){
+        var $this = $(this);
+        var isUser = $this.attr("data-user")
+        var submitSpan = $this.find(".submit-span");
+        var productInput = $this.find('[name="product_id"]');
+        var productId = productInput.attr("value")
+        var productIsDigital = productInput.attr("data-is-digital")
+        
+        if (productIsDigital && isUser){
+            getOwnedProduct(productId, submitSpan)
+        }   
+    })
+
     productForm.submit(function(event){
         event.preventDefault();
         // console.log("Form is not sending")
         var thisForm = $(this);
         // var actionEndpoint = thisForm.attr("action");
-        var actionEndpoint = thisForm.attr("data-endpoint")
-        var httpMethod = thisForm.attr("method");;
+        var actionEndpoint = thisForm.attr("data-endpoint");
+        var httpMethod = thisForm.attr("method");
         var formData = thisForm.serialize();
 
         $.ajax({
@@ -110,11 +145,11 @@ $(document).ready(function(){
             method: httpMethod,
             data: formData,
             success: function(data){
-                var submitSpan = thisForm.find(".submit-span")
+                var submitSpan = thisForm.find(".submit-span");
                 if (data.added) {
-                    submitSpan.html('In cart <button type="submit" class="btn btn-link">Remove?</button>')
+                    submitSpan.html("<div class='btn-group'> <a class='btn btn-link' href='/cart/'>In cart</a> <button type='submit' class='btn btn-link'>Remove?</button></div>");
                 } else {
-                    submitSpan.html('<button type="submit" class="btn btn-success">Add to cart</button>')
+                    submitSpan.html('<button type="submit" class="btn btn-success">Add to cart</button>');
                 }
 
                 var navbarCount = $(".navbar-cart-count")

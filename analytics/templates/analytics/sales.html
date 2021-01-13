@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row my-5">
+    <div class="col-12">
+        <h1>Sales Data</h1>
+    </div>
+</div>
+<hr />
+<div class="row my-5">
+    <div class="col-5">
+        <h3>Today's sales</h3>
+        <hr />
+        <p>Recent Total: ${{ today.recent_data.total__sum|floatformat:2 }}</p>
+        <ol>
+        {% for order in today.recent %}
+            <li>{{ order.order_id }}
+            {{ order.total }}
+            {{ order.updated|timesince }}</li>
+        {% endfor %}
+        </ol>
+
+        <h3>This week's sales</h3>
+        <hr />
+        <p>Recent Total: ${{ this_week.recent_data.total__sum|floatformat:2 }}</p>
+        <ol>
+        {% for order in this_week.recent %}
+            <li>{{ order.order_id }}
+            {{ order.total }}
+            {{ order.updated|timesince  }}</li>
+        {% endfor %}
+        </ol>
+    </div>
+    <div class="col-6">
+        <canvas class="cfe-render-chart" id="thisWeekSales" width="100" height="100" data-type="week"></canvas>
+    </div>
+</div>
+<hr />
+<div class="row my-5">
+    <div class="col-12">
+        <h1>Previous 4 weeks</h1>
+    </div>
+    <div class="col">
+        <p>Recent Total: ${{ last_four_weeks.recent_data.total__sum|floatformat:2 }}</p>
+        <p>Shipped Total: ${{ last_four_weeks.shipped_data.total__sum|floatformat:2 }}</p>
+        <p>Paid Total: ${{ last_four_weeks.paid_data.total__sum|floatformat:2 }}</p>
+    </div>
+
+    <div class="col">
+        <canvas class="cfe-render-chart" id="fourWeekSales" width="100" height="100" data-type="4weeks"></canvas>
+    </div>
+</div>
+
+{% endblock %}
