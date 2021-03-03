@@ -1,4 +1,5 @@
 import datetime
+import os
 
 AWS_GROUP_NAME = "eCommerce_group"
 AWS_USERNAME = "ecommerce-user"
