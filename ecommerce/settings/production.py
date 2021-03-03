@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'gjj2_8nq-#7*=@^5q(uz@9z#!=%o)rb*9le$po7k6lb6ea#ue4'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ecommercetesting1991@gmail.com'
-EMAIL_HOST_PASSWORD = 'XNAyvzGuxdQM5xS'
+EMAIL_HOST_PASSWORD = os.environ('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS =True
 DEFAULT_FROM_EMAIL = 'Python ecommerce <ecommercetesting1991@gmail.com>'
@@ -71,7 +71,7 @@ LOGOUT_REDIRECT_URL = '/login/'
 FORCE_SESSION_TO_ONE = False
 FORCE_INACTIVE_USER_ENDSESSION = False
 
-MAILCHIMP_API_KEY = "3e179cc597570b0d7893c506a6ad70c7-us2"
+MAILCHIMP_API_KEY = os.environ.get("MAILCHIMP_API_KEY")
 MAILCHIMP_DATA_CENTER = "us2"
 MAILCHIMP_EMAIL_LIST_ID = "7bf785355d"
 
